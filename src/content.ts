@@ -2,29 +2,26 @@ const regex = /amazon\.com.+\/dp\/[A-Z0-9]{10}\/ref=.+s=digital-skills/;
 
 window.addEventListener("load", () => {
   console.log("🔍Content script loaded");
-  // 提取 Alexa Skill 页面数据
+  // extract Alexa Skill information
   const isDetailPage = regex.test(window.location.href);
   const skillTitleElement = document.querySelector<HTMLDivElement>('div[data-cy="skill-title"][role="heading"]');
   const skillDescriptionElement = document.querySelector<HTMLDivElement>('div[data-cy="skill-product-description-see-more"]');
   const skillData = {
-    title: skillTitleElement ? skillTitleElement.innerText.trim() : "未知技能",
-    description: skillDescriptionElement ? skillDescriptionElement.innerText.trim() : "无描述",
+    title: skillTitleElement ? skillTitleElement.innerText.trim() : "unknown title",
+    description: skillDescriptionElement ? skillDescriptionElement.innerText.trim() : "unknown description",
     isDetailPage: isDetailPage
   };
   if (isDetailPage) {
-    console.log("📊 提取到的数据:", skillData);
     chrome.storage.session.set({ currentSkillData: skillData }, () => console.log("storage.session set done."));
-    // 查找 Developer Privacy Policy 超链接
+    // find link
     const policyXpath = "//a[text()='Developer Privacy Policy']";
     const policyXpathResult = document.evaluate(policyXpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
     const policyLinkElement = policyXpathResult.singleNodeValue as HTMLAnchorElement;
     if (policyLinkElement) {
-      console.log("🔗 Developer Privacy Policy 超链接找到:", policyLinkElement.href);
       policyLinkElement.addEventListener("click", () => {
-        console.log("📤 用户点击了隐私政策超链接，记录 Skill 数据...");
-        // 存储 Skill 数据到 local，保证跨页面可用
+        // store info to local
         chrome.storage.local.set({ savedSkillData: skillData }, () => console.log("storage.local set done."));
-        // 监听新 Tab 创建
+        // to background.ts
         chrome.runtime.sendMessage({ action: "privacyPolicyClicked" });
       });
     }

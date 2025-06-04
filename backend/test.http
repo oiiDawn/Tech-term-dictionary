@@ -1,0 +1,16 @@
+@baseUrl = http://localhost:8000
+
+### Health
+GET {{baseUrl}}/health
+
+### Query
+POST {{baseUrl}}/query
+Content-Type: application/json
+Accept: application/json
+
+{
+  "term": "disclose",
+  "title": "ABC Kids",
+  "description": "This is the home of the best Aussie audio for kids, from your ABC. We've got podcasts, we've got games, we've got stories and more. And the best part is, there's something new every day. We can help you start the day right with kids news, relax with a story for your afternoon nap, mix up a deliciously fun Story Salad and get ready for bed with lullabies. Simply say \"Alexa, open ABC Kids\" for the best on-demand kids content, curated for the time of day: • In the morning (7am – Midday), start your day with kids news, podcasts and games • In the afternoon, (Midday – 3pm), hear an Acknowledgement of Country, and wind down with stories and Soundwalks • In the evening (3pm – 7pm), find out what today's Giggles and Riddles will be, listen to a podcast or play Story Salad • At night time (7pm – 7am) the next morning, get ready for bed with Relaxey Time, Lullabies and Bedtime stories. Want to get straight to the stuff you want? To hear a story, just say \"Alexa, ask ABC Kids to tell me a story.\" To hear some lullabies, just say: \"Alexa, ask ABC Kids to play me a lullaby.\" To hear your favourite podcast, you can ask ABC Kids for: • Dino Dome (\"Alexa, ask ABC Kids to play Dino Dome\") • Imagine This (\"Alexa, tell ABC Kids to play Imagine This\") • Noisy by Nature (\"Alexa, ask ABC Kids to play Noisy by Nature\") • Little Yarns (\"Alexa, tell ABC Kids to play Little Yarns\") • Play School: Ears On (\"Alexa, ask ABC Kids to play Play School: Ears On\") • News Time (\"Alexa, tell ABC Kids to play News Time\") • Soundwalks (\"Alexa, ask ABC Kids to play a Soundwalk\") • Story Salad (\"Alexa, tell ABC Kids to play Story Salad\") Need a little help around daily routines? You can ask ABC Kids to help your family: • Brush your teeth (\"Alexa, ask ABC Kids to help me brush my teeth\") • Take a bath (\"Alexa, ask ABC Kids to help me take a bath\" or \"Alexa, tell ABC Kids it's time to have a shower\") • Calm down (\"Alexa, ask ABC Kids to help me calm down\") • Get dressed (\"Alexa, ask ABC Kids to help me get dressed\") • Get ready to leave (\"Alexa, tell ABC Kids it's time to leave\") • Put on your shoes (\"Alexa, ask ABC Kids to help me put on my shoes\") • Shake your sillies out (\"Alexa, tell ABC Kids it's time to shake my sillies out\") • Tidy up (\"Alexa, tell ABC Kids it's time to tidy up\") • Eat a meal (\"Alexa, tell ABC Kids it's time to eat\") • Wash your hands (\"Alexa, ask ABC Kids to help me wash my hands\")",
+  "snippet": "The ABC does not commercialise data. If we are required to disclose information, including your personal information, to help us provide services to you, we do not receive any sort of payment for doing this."
+}

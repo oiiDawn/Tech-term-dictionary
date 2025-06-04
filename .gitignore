@@ -24,4 +24,11 @@ dist-ssr
 *.sw?
 *.tsbuildinfo
 
-llm.config.ts
+*.lock
+package-lock.json
+
+.cache
+__pycache__
+
+api_key.txt
+FActScore*

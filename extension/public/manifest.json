@@ -3,7 +3,10 @@
   "name": "Skill Highlighter",
   "version": "1.0",
   "permissions": ["activeTab", "scripting", "storage", "tabs", "contextMenus"],
-  "host_permissions": ["<all_urls>"],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
   "background": {
     "service_worker": "background.js"
   },

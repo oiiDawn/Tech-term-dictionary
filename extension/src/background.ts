@@ -1,3 +1,7 @@
+import axios from "axios";
+
+const llamaAPI = "http://localhost:8000/query";
+
 chrome.runtime.onInstalled.addListener(() => {
   console.log("✅ Extension Installed: Background Active");
   chrome.contextMenus.create({
@@ -37,8 +41,25 @@ chrome.runtime.onMessage.addListener((message) => {
 
 chrome.contextMenus.onClicked.addListener((info) => {
   if (info.menuItemId === "logSelectedText") {
-    const selectionText = info.selectionText;
+    const selectionText = info.selectionText!;
     console.log("Selected Text: ", selectionText);
-
+    chrome.storage.local.get(["savedSkillData"], (data) => {
+      const title = data.savedSkillData.title;
+      const description = data.savedSkillData.description;
+      const body = {
+        term: selectionText,
+        title: title,
+        description: description,
+        snippet: ""
+      }
+      console.log(body);
+      axios.post(llamaAPI, body, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }).then(response => {
+        console.log(response);
+      })
+    });
   }
 });
